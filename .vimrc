@@ -31,7 +31,7 @@ Plug 'wincent/command-t' , { 'do': 'cd ruby/command-t/ext/command-t && /usr/bin/
 call plug#end()
 
 " RipGrep
-let rg_binary="/home/yariv/.cargo/bin/rg"
+let rg_binary="$HOME/.cargo/bin/rg"
 map <c-g> :Rg<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -295,6 +295,9 @@ aunmenu *
 set guioptions-=m
 set guioptions-=T
 
+" fix the screen tearing problem
+"set guioptions-=e
+
 " search is case-insensitive
 "set ignorecase
 " unless they contain upper-case letters
@@ -417,4 +420,10 @@ if has("mac")
 
   " use standard unix newline character
   set fileformat=unix
+endif
+
+if has("win32unix")
+  " Following is Cygwin-Only
+  " backspace doesn't delete under cygwin - fix it
+  set backspace=2
 endif
