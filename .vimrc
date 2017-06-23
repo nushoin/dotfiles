@@ -3,6 +3,34 @@
 set nocompatible
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+ 
+" Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
+call plug#begin('~/.vim/plugged')
+ 
+" Make sure you use single quotes
+ 
+Plug 'valloric/youcompleteme', { 'do': './install.py' }
+Plug 'jlanzarotta/bufexplorer'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'ervandew/supertab'
+Plug 'jremmen/vim-ripgrep'
+Plug 'pangloss/vim-javascript'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+"Plug 'wellle/targets.vim' " adds new text objects e.g. text between '_'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf.vim'
+"Plug 'Shougo/denite.nvim' " fuzzy finder
+Plug 'wincent/command-t' , { 'do': 'cd ruby/command-t/ext/command-t && /usr/bin/ruby extconf.rb && make' }
+"Plug 'ctrlpvim/ctrlp.vim' " fuzzy finder
+ 
+" Initialize plugin system
+call plug#end()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " movement and indenting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -341,8 +369,8 @@ if has("windows") || has("win32") || has("win64") || has("win32unix")
   set guifont=Courier_New:h10:cANSI
 
   " make related
-  set mef=V:\\MakeErrorFile##.txt
-  set makeprg=cmd.exe\ /C\ BuildIt.bat
+  "set mef=V:\\MakeErrorFile##.txt
+  "set makeprg=cmd.exe\ /C\ BuildIt.bat
 
   " NERDTree
   let NERDChristmasTree = 1
