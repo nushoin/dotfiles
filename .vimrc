@@ -30,6 +30,10 @@ Plug 'wincent/command-t' , { 'do': 'cd ruby/command-t/ext/command-t && /usr/bin/
 " Initialize plugin system
 call plug#end()
 
+" RipGrep
+let rg_binary="/home/yariv/.cargo/bin/rg"
+map <c-g> :Rg<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " movement and indenting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
