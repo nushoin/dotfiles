@@ -1,0 +1,30 @@
+#!/bin/bash
+ 
+path_append()
+{
+  export $1=${!1:+"${!1}:"}$2
+}
+
+path_prepend()
+{
+  export $1=$2${!1:+":${!1}"}
+}
+ 
+path_prepend_once() {
+    if [[ ":${!1}:" != *":$2:"* ]]; then
+        path_prepend $1 $2
+    fi
+}
+ 
+path_append_once() {
+    if [[ ":${!1}:" != *":$2:"* ]]; then
+        path_append $1 $2
+    fi
+}
+ 
+# for example
+#export X_DEPLOY_ROOT="$HOME/src/X/deploy"
+#path_prepend_once PKG_CONFIG_PATH $X_DEPLOY_ROOT/lib/pkgconfig
+#path_prepend_once PKG_CONFIG_PATH $X_DEPLOY_ROOT/share/pkgconfig
+ 
+
