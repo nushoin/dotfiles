@@ -20,6 +20,8 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'pangloss/vim-javascript'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rbenv'
+Plug 'tpope/vim-bundler'
 "Plug 'wellle/targets.vim' " adds new text objects e.g. text between '_'
 "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 "Plug 'junegunn/fzf.vim'
@@ -33,6 +35,13 @@ call plug#end()
 " RipGrep
 let rg_binary="$HOME/.cargo/bin/rg"
 map <c-g> :Rg<CR>
+imap <c-g> <Esc>:Rg<CR>a
+
+" NERDTree
+map <c-p> :NERDTreeFind<CR>
+imap <c-p> <Esc>:NERDTreeFind<CR>a
+map <c-n> :NERDTreeToggle<CR>
+imap <c-n> <Esc>:NERDTreeToggle<CR>a
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " movement and indenting
@@ -236,7 +245,7 @@ imap <a-up> <Esc>:cp<CR>i<c-o>
 " Python related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-map <c-p> :set ft=python<CR>
+"map <c-p> :set ft=python<CR>
 map  <c-e> <Plug>PimpEvalFile
 imap <c-e> <Esc><Plug>PimpEvalFilea
 vmap <c-e> <Plug>PimpEvalBlock
@@ -392,7 +401,7 @@ if has("windows") || has("win32") || has("win64") || has("win32unix")
   set shellredir=>\"%s\"\ 2>&1
 
   " indenting
-  autocmd FileType c,cpp set noexpandtab
+  "autocmd FileType c,cpp set noexpandtab
   set shiftwidth=4
   set tabstop=4
   set softtabstop=4
@@ -400,7 +409,7 @@ endif
 
 if has("mac")
   " indenting
-  autocmd FileType c,cpp set noexpandtab
+  "autocmd FileType c,cpp set noexpandtab
   set shiftwidth=4
   set tabstop=4
   set softtabstop=4
