@@ -62,7 +62,7 @@ set smarttab
 set expandtab
 
 " use alt-t to toggle tab expension
-map <a-t> :set expandtab!<CR>
+"map <a-t> :set expandtab!<CR>
 
 " automatic indenting
 set autoindent
@@ -87,6 +87,20 @@ augroup csrc
   autocmd FileType c,cpp  set shiftwidth=3
   autocmd FileType c,cpp  set tabstop=3
   autocmd FileType c,cpp  set softtabstop=3
+augroup END
+
+" C/C++ programming helpers
+augroup rubysrc
+  au!
+  autocmd FileType *     set nocindent
+  autocmd FileType ruby  set shiftwidth=2
+  autocmd FileType ruby  set tabstop=2
+  autocmd FileType ruby  set softtabstop=2
+  autocmd FileType ruby  set omnifunc=rubycomplete#Complete
+  autocmd FileType ruby  let g:rubycomplete_buffer_loading = 1
+  autocmd FileType ruby  let g:rubycomplete_classes_in_global = 1
+  autocmd FileType ruby  let g:rubycomplete_rails = 1
+  "autocmd FileType ruby setl omnifunc=syntaxcompelete#Complete
 augroup END
 
 " In Makefiles, don't expand tabs to spaces, since we need the actual tabs
