@@ -1,6 +1,7 @@
 " Use Vim settings, rather then Vi settings
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+filetype off
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -11,17 +12,19 @@ call plug#begin('~/.vim/plugged')
  
 " Make sure you use single quotes
  
+Plug 'ervandew/supertab'
 Plug 'valloric/youcompleteme', { 'do': './install.py' }
 Plug 'jlanzarotta/bufexplorer'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'ervandew/supertab'
+Plug 'vim-syntastic/syntastic'
 Plug 'jremmen/vim-ripgrep'
 Plug 'pangloss/vim-javascript'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-fugitive'
 "Plug 'wellle/targets.vim' " adds new text objects e.g. text between '_'
 "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 "Plug 'junegunn/fzf.vim'
@@ -32,6 +35,11 @@ Plug 'wincent/command-t' , { 'do': 'cd ruby/command-t/ext/command-t && /usr/bin/
 " Initialize plugin system
 call plug#end()
 
+" turn on all filetype plugins
+filetype plugin indent on
+
+packadd! matchit
+
 " RipGrep
 let rg_binary="$HOME/.cargo/bin/rg"
 let rg_command = g:rg_binary . ' --vimgrep -w'
@@ -39,10 +47,10 @@ map <c-g> :Rg<CR>
 imap <c-g> <Esc>:Rg<CR>a
 
 " NERDTree
-map <c-p> :NERDTreeFind<CR>
-imap <c-p> <Esc>:NERDTreeFind<CR>a
-map <c-n> :NERDTreeToggle<CR>
-imap <c-n> <Esc>:NERDTreeToggle<CR>a
+map <c-s> :NERDTreeFind<CR>
+imap <c-s> <Esc>:NERDTreeFind<CR>a
+map <c-e> :NERDTreeToggle<CR>
+imap <c-e> <Esc>:NERDTreeToggle<CR>a
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " movement and indenting
@@ -75,6 +83,17 @@ set nosmartindent
 set whichwrap+=<,>,h,l,[,]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Code completion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"set omnifunc=syntaxcomplete#Complete
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File type specific options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -89,18 +108,17 @@ augroup csrc
   autocmd FileType c,cpp  set softtabstop=3
 augroup END
 
-" C/C++ programming helpers
+" ruby programming helpers
 augroup rubysrc
   au!
   autocmd FileType *     set nocindent
   autocmd FileType ruby  set shiftwidth=2
   autocmd FileType ruby  set tabstop=2
   autocmd FileType ruby  set softtabstop=2
-  autocmd FileType ruby  set omnifunc=rubycomplete#Complete
-  autocmd FileType ruby  let g:rubycomplete_buffer_loading = 1
-  autocmd FileType ruby  let g:rubycomplete_classes_in_global = 1
-  autocmd FileType ruby  let g:rubycomplete_rails = 1
-  "autocmd FileType ruby setl omnifunc=syntaxcompelete#Complete
+  "autocmd FileType ruby  set omnifunc=rubycomplete#Complete
+  "autocmd FileType ruby  let g:rubycomplete_buffer_loading = 1
+  "autocmd FileType ruby  let g:rubycomplete_classes_in_global = 1
+  "autocmd FileType ruby  let g:rubycomplete_rails = 1
 augroup END
 
 " In Makefiles, don't expand tabs to spaces, since we need the actual tabs
@@ -136,8 +154,14 @@ set wildmenu
 set wildmode=list:longest
 set wildignore+=*.pyc,*.zip,*.gz,*.bz,*.tar,*.jpg,*.png,*.gif,*.avi,*.wmv,*.ogg,*.mp3,*.mov,*.swp,*.orig
 
+" set autocomplete menu options
+set completeopt=menu,longest
+
 " show the status line at the bottom
 set ruler
+
+" show git branch in the status line
+set statusline=%{fugitive#statusline()}\ %r%m%f%=%c\ %l/%L
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Windows-style movement
@@ -261,9 +285,9 @@ imap <a-up> <Esc>:cp<CR>i<c-o>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "map <c-p> :set ft=python<CR>
-map  <c-e> <Plug>PimpEvalFile
-imap <c-e> <Esc><Plug>PimpEvalFilea
-vmap <c-e> <Plug>PimpEvalBlock
+"map  <c-e> <Plug>PimpEvalFile
+"imap <c-e> <Esc><Plug>PimpEvalFilea
+"vmap <c-e> <Plug>PimpEvalBlock
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Miscellaneous
@@ -275,18 +299,12 @@ let mapleader = ","
 " do not briefly jump to matching brace
 set noshowmatch
 
-" use Ctrl+S to save
-map <c-s> :w<CR>
-imap <c-s> <Esc>:w<CR>a
-
 " surround selection with \parhead{}
 vmap ,ph di\parhead{<Esc>pa}<Esc>
 
 " quick quit
 map <a-q> :q<enter>
 imap <a-q> <Esc>:q<Enter>
-map <c-q> :bd<enter>
-imap <c-q> <Esc>:bd<Enter>
 
 " split line at the cursor
 nmap <c-cr> i<cr>
@@ -304,9 +322,6 @@ set gcr=a:blinkon0
 
 " for the csapprox plugin
 set t_Co=256
-
-" turn on all filetype plugins
-filetype plugin indent on
 
 " automatically insert comment leaders
 set formatoptions+=ro
@@ -352,9 +367,6 @@ map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
 
 " map <ctrl>+F11 to grep for word under cursor
 map <C-F11> yiw:vimgrep <C-R>0 **/*.c*<CR>
-
-" set autocomplete menu options
-set completeopt=menu,longest
 
 " set line end (newline) format
 set ffs=unix,dos
