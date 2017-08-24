@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
  
 Plug 'ervandew/supertab'
-Plug 'valloric/youcompleteme', { 'do': './install.py' }
+"Plug 'valloric/youcompleteme', { 'do': './install.py' }
 Plug 'jlanzarotta/bufexplorer'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -86,7 +86,7 @@ set whichwrap+=<,>,h,l,[,]
 " Code completion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"set omnifunc=syntaxcomplete#Complete
+set omnifunc=syntaxcomplete#Complete
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -275,6 +275,10 @@ map <c-j> :cn<CR>
 map <c-k> :cp<CR>
 imap <c-j> <Esc>:cn<CR>i<c-o>
 imap <c-k> <Esc>:cp<CR>i<c-o>
+"map <a-j> :cnewer<CR>
+"map <a-k> :colder<CR>
+"imap <a-j> <Esc>:cnewer<CR>i<c-o>
+"imap <a-k> <Esc>:colder<CR>i<c-o>
 map <a-down> :cn<CR>
 map <a-up> :cp<CR>
 imap <a-down> <Esc>:cn<CR>i<c-o>
