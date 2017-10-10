@@ -467,3 +467,8 @@ if has("win32unix")
   " backspace doesn't delete under cygwin - fix it
   set backspace=2
 endif
+
+if &diff
+    "colorscheme evening
+    syntax off
+endif
