@@ -42,7 +42,7 @@ packadd! matchit
 
 " RipGrep
 let rg_binary="$HOME/.cargo/bin/rg"
-let rg_command = g:rg_binary . ' --vimgrep -w'
+let rg_command = g:rg_binary . ' --vimgrep'
 map <c-g> :Rg<CR>
 imap <c-g> <Esc>:Rg<CR>a
 
