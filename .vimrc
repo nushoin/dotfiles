@@ -17,7 +17,7 @@ Plug 'ervandew/supertab'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic' " conflicts with w0rp/ale
 Plug 'jremmen/vim-ripgrep'
 Plug 'pangloss/vim-javascript'
 Plug 'vim-ruby/vim-ruby'
@@ -25,6 +25,7 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-fugitive'
+Plug 'w0rp/ale'
 "Plug 'wellle/targets.vim' " adds new text objects e.g. text between '_'
 "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 "Plug 'junegunn/fzf.vim'
@@ -38,7 +39,17 @@ call plug#end()
 " turn on all filetype plugins
 filetype plugin indent on
 
+" load the matchit plugin that is bundled with vim
 packadd! matchit
+
+" currently disable all linters. to enable comment out this section and optionally
+" uncomment the next section.
+let g:ale_linters = {
+\   'javascript': [],
+\}
+"let g:ale_linters = {
+"\   'javascript': ['eslint'],
+"\}
 
 " RipGrep
 let rg_binary="$HOME/.cargo/bin/rg"
