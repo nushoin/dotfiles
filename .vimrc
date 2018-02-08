@@ -44,12 +44,12 @@ packadd! matchit
 
 " currently disable all linters. to enable comment out this section and optionally
 " uncomment the next section.
-let g:ale_linters = {
-\   'javascript': [],
-\}
 "let g:ale_linters = {
-"\   'javascript': ['eslint'],
+"\   'javascript': [],
 "\}
+let g:ale_linters = {
+      \   'javascript': ['eslint'],
+      \}
 
 " RipGrep
 let rg_binary="$HOME/.cargo/bin/rg"
@@ -417,7 +417,7 @@ if has("gui_running") && !has("mac")
   "au GUIEnter * simalt ~x
 endif
 
-if has("windows") || has("win32") || has("win64") || has("win32unix")
+if has("win32") || has("win64") || has("win32unix")
   " Following is Windows-Only, including cygwin
 
   " selection mode etc. as in x-windows
