@@ -67,6 +67,9 @@ imap <c-e> <Esc>:NERDTreeToggle<CR>a
 " movement and indenting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" remap the leader key to ','
+let mapleader = ","
+
 " no line wrapping
 set nowrap
 
@@ -295,6 +298,10 @@ map <a-up> :cp<CR>
 imap <a-down> <Esc>:cn<CR>i<c-o>
 imap <a-up> <Esc>:cp<CR>i<c-o>
 
+" linter
+map <Leader>en <Plug>(ale_next_wrap)
+map <Leader>ep <Plug>(ale_previous_wrap)
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Python related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -307,9 +314,6 @@ imap <a-up> <Esc>:cp<CR>i<c-o>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Miscellaneous
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" remap the leader key to ','
-let mapleader = ","
 
 " do not briefly jump to matching brace
 set noshowmatch
@@ -424,7 +428,7 @@ if has("win32") || has("win64") || has("win32unix")
   behave xterm
 
   " font
-  set guifont=Courier_New:h10:cANSI
+  "set guifont=Courier_New:h10:cANSI
 
   " make related
   "set mef=V:\\MakeErrorFile##.txt
