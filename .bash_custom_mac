@@ -1,0 +1,4 @@
+# bash completions
+source /usr/local/etc/bash_completion.d/brew
+source /usr/local/etc/bash_completion.d/git-completion.bash
+source /usr/local/etc/bash_completion.d/git-prompt.sh

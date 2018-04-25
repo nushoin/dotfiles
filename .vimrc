@@ -465,7 +465,9 @@ if has("mac")
   let clang_exec = '~/Downloads/clang+llvm-2.9-x86_64-apple-darwin10/bin/clang'
 
   " use option as meta
-  autocmd BufEnter * set macmeta
+  if has("macvim") || has("gui_macvim")
+    autocmd BufEnter * set macmeta
+  endif
 
   " highlight search in yellow
   highlight Search guibg=yellow
