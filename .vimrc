@@ -30,7 +30,8 @@ Plug 'w0rp/ale'
 "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 "Plug 'junegunn/fzf.vim'
 "Plug 'Shougo/denite.nvim' " fuzzy finder
-Plug 'wincent/command-t' , { 'do': 'cd ruby/command-t/ext/command-t && /usr/bin/ruby extconf.rb && make' }
+"Plug 'wincent/command-t' , { 'do': 'cd ruby/command-t/ext/command-t && /usr/bin/ruby extconf.rb && make' }
+Plug 'ctrlpvim/ctrlp.vim'
 "Plug 'ctrlpvim/ctrlp.vim' " fuzzy finder
  
 " Initialize plugin system
@@ -62,6 +63,14 @@ map <c-s> :NERDTreeFind<CR>
 imap <c-s> <Esc>:NERDTreeFind<CR>a
 map <c-e> :NERDTreeToggle<CR>
 imap <c-e> <Esc>:NERDTreeToggle<CR>a
+
+" CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+let &grepprg=g:rg_binary . ' --color=never'
+let g:ctrlp_user_command = g:rg_binary . ' %s --files --color=never --glob ""'
+let g:ctrlp_use_caching = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " movement and indenting
@@ -166,7 +175,7 @@ set showmode
 " show autocomplete menus
 set wildmenu
 set wildmode=list:longest
-set wildignore+=*.pyc,*.zip,*.gz,*.bz,*.tar,*.jpg,*.png,*.gif,*.avi,*.wmv,*.ogg,*.mp3,*.mov,*.swp,*.orig
+set wildignore+=*/.git/*,*.pyc,*.zip,*.gz,*.bz,*.tar,*.jpg,*.png,*.gif,*.avi,*.wmv,*.ogg,*.mp3,*.mov,*.swp,*.orig
 
 " set autocomplete menu options
 set completeopt=menu,longest
@@ -306,6 +315,7 @@ map <Leader>ep <Plug>(ale_previous_wrap)
 " Python related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" c-p is used by CtrlP
 "map <c-p> :set ft=python<CR>
 "map  <c-e> <Plug>PimpEvalFile
 "imap <c-e> <Esc><Plug>PimpEvalFilea
