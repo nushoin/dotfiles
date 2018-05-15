@@ -20,6 +20,7 @@ Plug 'scrooloose/nerdtree'
 "Plug 'vim-syntastic/syntastic' " conflicts with w0rp/ale
 Plug 'jremmen/vim-ripgrep'
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
