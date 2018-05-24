@@ -25,7 +25,9 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-bundler'
+" vim-fugitive is for git stuff
 Plug 'tpope/vim-fugitive'
+" w0rp/ale 'Asynchronous Lint Engine'
 Plug 'w0rp/ale'
 "Plug 'wellle/targets.vim' " adds new text objects e.g. text between '_'
 "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -33,7 +35,6 @@ Plug 'w0rp/ale'
 "Plug 'Shougo/denite.nvim' " fuzzy finder
 "Plug 'wincent/command-t' , { 'do': 'cd ruby/command-t/ext/command-t && /usr/bin/ruby extconf.rb && make' }
 Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'ctrlpvim/ctrlp.vim' " fuzzy finder
  
 " Initialize plugin system
 call plug#end()
