@@ -27,6 +27,8 @@ Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-bundler'
 " vim-fugitive is for git stuff
 Plug 'tpope/vim-fugitive'
+" convert between camelCase, snake_case etc
+Plug 'chiedo/vim-case-convert'
 " w0rp/ale 'Asynchronous Lint Engine'
 Plug 'w0rp/ale'
 "Plug 'wellle/targets.vim' " adds new text objects e.g. text between '_'
