@@ -57,7 +57,13 @@ let g:ale_linters = {
       \}
 
 " RipGrep
-let rg_binary="$HOME/.cargo/bin/rg"
+if has("mac")
+  " ripgrep is on default path after installing with brew
+  let rg_binary="rg"
+else
+  let rg_binary="$HOME/.cargo/bin/rg"
+endif
+
 let rg_command = g:rg_binary . ' --vimgrep'
 map <c-g> :Rg<CR>
 imap <c-g> <Esc>:Rg<CR>a
