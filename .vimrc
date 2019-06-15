@@ -56,6 +56,11 @@ let g:ale_linters = {
       \   'javascript': ['eslint'],
       \}
 
+" `git rev-parse --show-toplevel` returns the root folder of the current git
+" repo. so the following settings adds an include search path to <project root
+" folder>/_build, which is useful for e.g. the gtk project
+let g:ale_c_gcc_options="-std=c11 -Wall -I`git rev-parse --show-toplevel`/_build"
+
 " RipGrep
 if has("mac")
   " ripgrep is on default path after installing with brew

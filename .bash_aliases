@@ -1,4 +1,5 @@
 alias ll='ls -lFh'
+alias lls='ll --group-directories-first --color=always|less -SR'
 
 case "$OSTYPE" in
   linux*)
