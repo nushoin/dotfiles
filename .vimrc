@@ -37,6 +37,7 @@ Plug 'w0rp/ale'
 "Plug 'Shougo/denite.nvim' " fuzzy finder
 "Plug 'wincent/command-t' , { 'do': 'cd ruby/command-t/ext/command-t && /usr/bin/ruby extconf.rb && make' }
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'wsdjeg/FlyGrep.vim'
  
 " Initialize plugin system
 call plug#end()
@@ -86,6 +87,12 @@ let g:ctrlp_cmd = 'CtrlP'
 let &grepprg=g:rg_binary . ' --color=never'
 let g:ctrlp_user_command = g:rg_binary . ' %s --files --color=never --glob ""'
 let g:ctrlp_use_caching = 0
+
+" FlyGrep
+let g:spacevim_debug_level = 0
+
+" actually c-_ maps c-/. go figure
+map <c-_> :FlyGrep<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " movement and indenting
