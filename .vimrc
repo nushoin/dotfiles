@@ -46,7 +46,11 @@ call plug#end()
 filetype plugin indent on
 
 " load the matchit plugin that is bundled with vim
-packadd! matchit
+if has('nvim')
+  runtime! macros/matchit.vim
+else
+  packadd! matchit
+endif
 
 " currently disable all linters. to enable comment out this section and optionally
 " uncomment the next section.
