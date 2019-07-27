@@ -37,7 +37,7 @@ Plug 'w0rp/ale'
 "Plug 'Shougo/denite.nvim' " fuzzy finder
 "Plug 'wincent/command-t' , { 'do': 'cd ruby/command-t/ext/command-t && /usr/bin/ruby extconf.rb && make' }
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'wsdjeg/FlyGrep.vim'
+"Plug 'wsdjeg/FlyGrep.vim'
  
 " Initialize plugin system
 call plug#end()
