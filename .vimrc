@@ -160,10 +160,12 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 " File type specific options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+autocmd FileType *      set nocindent
+
 " C/C++ programming helpers
 augroup csrc
   au!
-  autocmd FileType *      set nocindent
+  autocmd FileType c,cpp  set smartindent
   autocmd FileType c,cpp  set cindent
   "autocmd FileType c,cpp  set noexpandtab
   autocmd FileType c,cpp  set shiftwidth=3
@@ -174,7 +176,7 @@ augroup END
 " ruby programming helpers
 augroup rubysrc
   au!
-  autocmd FileType *     set nocindent
+  autocmd FileType ruby  set nocindent
   autocmd FileType ruby  set shiftwidth=2
   autocmd FileType ruby  set tabstop=2
   autocmd FileType ruby  set softtabstop=2
