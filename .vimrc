@@ -64,7 +64,21 @@ let g:ale_linters = {
 " `git rev-parse --show-toplevel` returns the root folder of the current git
 " repo. so the following settings adds an include search path to <project root
 " folder>/_build, which is useful for e.g. the gtk project
-let g:ale_c_gcc_options="-std=c11 -Wall -I`git rev-parse --show-toplevel`/_build"
+let g:ale_c_gcc_options =  "-std=c11 -Wall -I`git rev-parse --show-toplevel`/_build"
+let g:ale_c_gcc_options .= " -DGTK_COMPILATION"
+let g:ale_c_gcc_options .= " -I/usr/include/glib-2.0"
+let g:ale_c_gcc_options .= " -I/usr/include/cairo"
+let g:ale_c_gcc_options .= " -I/usr/include/pango-1.0"
+let g:ale_c_gcc_options .= " -I/usr/include/gdk-pixbuf-2.0"
+let g:ale_c_gcc_options .= " -I/usr/include/atk-1.0"
+let g:ale_c_gcc_options .= " -I/usr/lib/x86_64-linux-gnu/glib-2.0/include"
+let g:ale_c_gcc_options .= " -I`git rev-parse --show-toplevel`"
+let g:ale_c_gcc_options .= " -I`git rev-parse --show-toplevel`/gtk"
+let g:ale_c_gcc_options .= " -I`git rev-parse --show-toplevel`/subprojects/graphene/src"
+let g:ale_c_gcc_options .= " -I`git rev-parse --show-toplevel`/_build"
+let g:ale_c_gcc_options .= " -I`git rev-parse --show-toplevel`/_build/gdk"
+let g:ale_c_gcc_options .= " -I`git rev-parse --show-toplevel`/_build/gtk"
+let g:ale_c_gcc_options .= " -I`git rev-parse --show-toplevel`/_build/subprojects/graphene/src"
 
 " RipGrep
 if has("mac")
