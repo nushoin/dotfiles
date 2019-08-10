@@ -80,6 +80,7 @@ let g:ale_c_gcc_options .= " -I" . g:project_root . "/_build"
 let g:ale_c_gcc_options .= " -I" . g:project_root . "/_build/gdk"
 let g:ale_c_gcc_options .= " -I" . g:project_root . "/_build/gtk"
 let g:ale_c_gcc_options .= " -I" . g:project_root . "/_build/subprojects/graphene/src"
+let g:ale_c_gcc_options .= " -I" . g:project_root . "/_build/demos/gtk-demo"
 
 " RipGrep
 if has("mac")
@@ -169,9 +170,9 @@ augroup csrc
   autocmd FileType c,cpp  set smartindent
   autocmd FileType c,cpp  set cindent
   "autocmd FileType c,cpp  set noexpandtab
-  autocmd FileType c,cpp  set shiftwidth=3
-  autocmd FileType c,cpp  set tabstop=3
-  autocmd FileType c,cpp  set softtabstop=3
+  autocmd FileType c,cpp  set shiftwidth=2
+  autocmd FileType c,cpp  set tabstop=2
+  autocmd FileType c,cpp  set softtabstop=2
 augroup END
 
 " ruby programming helpers
