@@ -59,7 +59,12 @@ endif
 "\}
 let g:ale_linters = {
       \   'javascript': ['eslint'],
+      \   'c': ['clang'],
+      \   'cpp': ['clang'],
       \}
+
+" let ALE do auto completion
+let g:ale_completion_enabled = 1
 
 " `git rev-parse --show-toplevel` returns the root folder of the current git
 " repo. so the following settings adds an include search path to <project root
@@ -76,11 +81,16 @@ let g:ale_c_gcc_options .= " -I/usr/lib/x86_64-linux-gnu/glib-2.0/include"
 let g:ale_c_gcc_options .= " -I" . g:project_root
 let g:ale_c_gcc_options .= " -I" . g:project_root . "/gtk"
 let g:ale_c_gcc_options .= " -I" . g:project_root . "/subprojects/graphene/src"
+let g:ale_c_gcc_options .= " -I" . g:project_root . "/subprojects/glib/glib"
 let g:ale_c_gcc_options .= " -I" . g:project_root . "/_build"
 let g:ale_c_gcc_options .= " -I" . g:project_root . "/_build/gdk"
 let g:ale_c_gcc_options .= " -I" . g:project_root . "/_build/gtk"
 let g:ale_c_gcc_options .= " -I" . g:project_root . "/_build/subprojects/graphene/src"
 let g:ale_c_gcc_options .= " -I" . g:project_root . "/_build/demos/gtk-demo"
+
+" ALE clang
+let g:ale_c_clang_executable = "clang-8"
+let g:ale_c_clang_options = g:ale_c_gcc_options
 
 " RipGrep
 if has("mac")
@@ -167,6 +177,8 @@ autocmd FileType *      set nocindent
 " C/C++ programming helpers
 augroup csrc
   au!
+  " note: the following line forces treating 'h' files as 'C' rather than 'C++'
+  autocmd BufRead,BufNewFile *.h set filetype=c
   autocmd FileType c,cpp  set smartindent
   autocmd FileType c,cpp  set cindent
   "autocmd FileType c,cpp  set noexpandtab
