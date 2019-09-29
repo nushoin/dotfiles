@@ -71,7 +71,7 @@ let g:ale_completion_enabled = 1
 " folder>/_build, which is useful for e.g. the gtk project
 let g:project_root = "`git rev-parse --show-toplevel`"
 let g:ale_c_gcc_options =  "-std=c11 -Wall -I" . g:project_root . "/_build"
-let g:ale_c_gcc_options .= " -DGTK_COMPILATION"
+let g:ale_c_gcc_options .= " -DGTK_COMPILATION -DGDK_COMPILATION"
 let g:ale_c_gcc_options .= " -I/usr/include/glib-2.0"
 let g:ale_c_gcc_options .= " -I/usr/include/cairo"
 let g:ale_c_gcc_options .= " -I/usr/include/pango-1.0"
@@ -79,6 +79,7 @@ let g:ale_c_gcc_options .= " -I/usr/include/gdk-pixbuf-2.0"
 let g:ale_c_gcc_options .= " -I/usr/include/atk-1.0"
 let g:ale_c_gcc_options .= " -I/usr/lib/x86_64-linux-gnu/glib-2.0/include"
 let g:ale_c_gcc_options .= " -I" . g:project_root
+let g:ale_c_gcc_options .= " -I" . g:project_root . "/gdk"
 let g:ale_c_gcc_options .= " -I" . g:project_root . "/gtk"
 let g:ale_c_gcc_options .= " -I" . g:project_root . "/subprojects/graphene/include"
 let g:ale_c_gcc_options .= " -I" . g:project_root . "/subprojects/glib/glib"
