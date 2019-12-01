@@ -183,8 +183,10 @@ augroup csrc
   autocmd FileType c,cpp  set smartindent
   autocmd FileType c,cpp  set cindent
   "autocmd FileType c,cpp  set noexpandtab
+
+  " set the defaults
   autocmd FileType c,cpp  set shiftwidth=2
-  autocmd FileType c,cpp  set tabstop=2
+  "autocmd FileType c,cpp  set tabstop=2
   autocmd FileType c,cpp  set softtabstop=2
 augroup END
 
