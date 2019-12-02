@@ -24,7 +24,8 @@ set $term gnome-terminal
 
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+# set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $launcher dmenu_path | fzf | xargs swaymsg exec
 
 ### Output configuration
 #
@@ -96,7 +97,8 @@ input "1452:591:Apple_Inc._Apple_Keyboard" {
     bindsym $mod+Shift+q kill
 
     # start your launcher
-    bindsym $mod+d exec $menu
+    # bindsym $mod+d exec $menu
+    bindsym $mod+d exec $term --hide-menubar --title launcher -e "sh -c \'$launcher\'"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -228,6 +230,11 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+# set width 2/3 of screen
+bindsym $mod+bracketright resize set width 67 ppt
+
+for_window [title="^launcher$"] floating enable
 
 #
 # Status Bar:
