@@ -10,6 +10,7 @@ focus_follows_mouse no
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
+set $alt Mod1
 
 # Home row direction keys, like vim
 set $left h
@@ -87,6 +88,9 @@ input "1452:591:Apple_Inc._Apple_Keyboard" {
 #
     # start a terminal
     bindsym $mod+Return exec $term
+
+    # lock screen
+    bindsym $mod+$alt+l exec swaylock -f -c 000000
 
     # kill focused window
     bindsym $mod+Shift+q kill
