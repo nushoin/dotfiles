@@ -24,6 +24,6 @@ stty -ixon
 # add git info to the prompt
 PS1='${debian_chroot:+($debian_chroot) }\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[38;5;95m\]$(__git_ps1)\[\033[0m\]\$ '
 
-export PATH=$PATH:~/.cargo/bin
+export PATH=$PATH:~/.cargo/bin:$HOME/.local/bin
 
 [[ -e ~/.bash_aliases.$USER ]] && source ~/.bash_aliases.$USER
