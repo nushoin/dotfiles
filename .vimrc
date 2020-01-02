@@ -59,6 +59,7 @@ endif
 "\}
 let g:ale_linters = {
       \   'javascript': ['eslint'],
+      \   'typescript': ['eslint'],
       \   'c': ['clang'],
       \   'cpp': ['clang'],
       \}
@@ -205,6 +206,14 @@ augroup END
 
 " In Makefiles, don't expand tabs to spaces, since we need the actual tabs
 autocmd FileType make set noexpandtab
+
+" lint.sh contents:
+" #!/bin/bash
+" LINT=$PWD/node_modules/eslint/bin/eslint.js
+" git ls-files|grep "\.js$\|\.ts$"|xargs $LINT $* --color=false
+let g:linter_script = g:project_root . "/end2end/lint.sh -f unix"
+autocmd FileType javascript let &l:makeprg=g:linter_script
+autocmd FileType typescript let &l:makeprg=g:linter_script
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Highlighting et al
