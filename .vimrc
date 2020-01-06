@@ -88,6 +88,7 @@ let g:ale_c_gcc_options .= " -I" . g:project_root . "/_build"
 let g:ale_c_gcc_options .= " -I" . g:project_root . "/_build/gdk"
 let g:ale_c_gcc_options .= " -I" . g:project_root . "/_build/gtk"
 let g:ale_c_gcc_options .= " -I" . g:project_root . "/_build/subprojects/graphene/src"
+let g:ale_c_gcc_options .= " -I" . g:project_root . "/_build/subprojects/graphene/include"
 let g:ale_c_gcc_options .= " -I" . g:project_root . "/_build/demos/gtk-demo"
 
 " ALE clang
