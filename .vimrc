@@ -21,6 +21,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'jremmen/vim-ripgrep'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'leafgarland/typescript-vim'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
@@ -212,7 +213,7 @@ autocmd FileType make set noexpandtab
 " #!/bin/bash
 " LINT=$PWD/node_modules/eslint/bin/eslint.js
 " git ls-files|grep "\.js$\|\.ts$"|xargs $LINT $* --color=false
-let g:linter_script = g:project_root . "/end2end/lint.sh -f unix"
+let g:linter_script = g:project_root . "/negu/lint.sh"
 autocmd FileType javascript let &l:makeprg=g:linter_script
 autocmd FileType typescript let &l:makeprg=g:linter_script
 
