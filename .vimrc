@@ -178,6 +178,28 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 
 autocmd FileType *      set nocindent
 
+" TypeScript programming helpers
+augroup tssrc
+  au!
+
+  " lint.sh contents:
+  " #!/bin/bash
+  " LINT=$PWD/node_modules/eslint/bin/eslint.js
+  " git ls-files|grep "\.js$\|\.ts$"|xargs $LINT $* --color=false
+  let g:linter_script = g:project_root . "/negu/lint.sh"
+  autocmd FileType javascript let &l:makeprg=g:linter_script
+  autocmd FileType typescript let &l:makeprg=g:linter_script
+
+  autocmd FileType typescript set smartindent
+  autocmd FileType typescript set nocindent
+  "autocmd FileType typescript set expandtab
+
+  " set the defaults
+  autocmd FileType typescript set shiftwidth=4
+  autocmd FileType typescript set tabstop=4
+  autocmd FileType typescript set softtabstop=4
+augroup END
+
 " C/C++ programming helpers
 augroup csrc
   au!
@@ -208,14 +230,6 @@ augroup END
 
 " In Makefiles, don't expand tabs to spaces, since we need the actual tabs
 autocmd FileType make set noexpandtab
-
-" lint.sh contents:
-" #!/bin/bash
-" LINT=$PWD/node_modules/eslint/bin/eslint.js
-" git ls-files|grep "\.js$\|\.ts$"|xargs $LINT $* --color=false
-let g:linter_script = g:project_root . "/negu/lint.sh"
-autocmd FileType javascript let &l:makeprg=g:linter_script
-autocmd FileType typescript let &l:makeprg=g:linter_script
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Highlighting et al
