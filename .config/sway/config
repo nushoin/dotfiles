@@ -20,7 +20,8 @@ set $right l
 
 # Your preferred terminal emulator
 #set $term urxvt
-set $term gnome-terminal
+#set $term gnome-terminal
+set $term alacritty
 
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
@@ -97,8 +98,9 @@ input "1452:591:Apple_Inc._Apple_Keyboard" {
     bindsym $mod+Shift+q kill
 
     # start your launcher
-    # bindsym $mod+d exec $menu
-    bindsym $mod+d exec $term --hide-menubar --title launcher -e "sh -c \'$launcher\'"
+    #bindsym $mod+d exec $menu
+    #bindsym $mod+d exec gnome-terminal --hide-menubar --title launcher -e "sh -c \'$launcher\'"
+    bindsym $mod+d exec $term --title launcher -e sh -c "$launcher"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
