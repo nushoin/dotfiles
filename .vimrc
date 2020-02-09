@@ -434,7 +434,7 @@ nmap <c-cr> i<cr>
 set gcr=a:blinkon0
 
 " for the csapprox plugin
-set t_Co=256
+"set t_Co=256
 
 " automatically insert comment leaders
 set formatoptions+=ro
