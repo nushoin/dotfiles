@@ -57,6 +57,9 @@ output * bg /usr/share/backgrounds/Frozen_sunset_on_the_lake_by_Manuel_Arslanyan
 ### Notifications
 exec mako
 
+### Night light
+exec redshift
+
 ### Input configuration
 #
 # Example configuration:
