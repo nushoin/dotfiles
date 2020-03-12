@@ -103,6 +103,7 @@ input "1452:592:Apple_Inc._Apple_Keyboard" {
 #
     # start a terminal
     bindsym $mod+Return exec $term
+    bindsym $mod+$alt+t exec kitty
 
     # lock screen
     bindsym $mod+$alt+l exec swaylock -f -c 000000
