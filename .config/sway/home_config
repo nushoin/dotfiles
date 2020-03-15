@@ -243,7 +243,10 @@ bindsym $mod+r mode "resize"
 # set width 2/3 of screen
 bindsym $mod+bracketright resize set width 67 ppt
 
+# set some window types as floating
 for_window [title="^launcher$"] floating enable
+for_window [app_id="firefox" title="About Firefox Nightly"] floating enable
+for_window [app_id="firefox" title="About Mozilla Firefox"] floating enable
 
 #
 # Status Bar:
