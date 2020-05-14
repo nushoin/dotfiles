@@ -3,3 +3,6 @@ if [[ "$debian_chroot" == "chroot" ]]; then
     export TERM=xterm
     export EDITOR=vim
 fi
+
+# fzf keybindings
+source /usr/share/doc/fzf/examples/key-bindings.bash
