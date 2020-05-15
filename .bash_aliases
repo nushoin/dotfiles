@@ -21,6 +21,18 @@ esac
 # disable flow control (Ctrl-q/Ctrl-s)
 stty -ixon
 
+# disable duplicates in history
+export HISTCONTROL=ignoreboth:erasedups
+
+# save history on exit
+function historymerge {
+    history -n; history -w; history -c; history -r;
+}
+trap historymerge EXIT
+
+# read history when showing the prompt
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
 # add git info to the prompt
 PS1='${debian_chroot:+($debian_chroot) }\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[38;5;95m\]$(__git_ps1)\[\033[0m\]\$ '
 
