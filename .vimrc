@@ -124,6 +124,10 @@ let &grepprg=g:rg_binary . ' --color=never'
 let g:ctrlp_user_command = g:rg_binary . ' %s --files --color=never --glob ""'
 let g:ctrlp_use_caching = 0
 
+" map shift-insert to paste in a terminal buffer.
+" on Mac keyboards that is Shift-Fn-Return
+tmap <S-Insert> <C-W>"0
+
 " FlyGrep
 let g:spacevim_debug_level = 0
 
