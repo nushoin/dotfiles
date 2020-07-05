@@ -31,7 +31,7 @@ set $launcher dmenu_path | fzf | xargs swaymsg exec
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/Frozen_sunset_on_the_lake_by_Manuel_Arslanyan.jpg fill
+output * bg /usr/share/backgrounds/On_top_of_the_Rubihorn_by_Matthias_Niess.jpg fill
 
 #
 # Example configuration:
