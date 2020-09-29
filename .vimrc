@@ -147,6 +147,8 @@ set tabstop=2
 set softtabstop=2
 set smarttab
 set expandtab
+" for comment formatting (gq) etc
+set textwidth=120
 
 " use alt-t to toggle tab expension
 "map <a-t> :set expandtab!<CR>
