@@ -39,6 +39,7 @@ Plug 'w0rp/ale'
 "Plug 'wincent/command-t' , { 'do': 'cd ruby/command-t/ext/command-t && /usr/bin/ruby extconf.rb && make' }
 Plug 'ctrlpvim/ctrlp.vim'
 "Plug 'wsdjeg/FlyGrep.vim'
+Plug 'stefandtw/quickfix-reflector.vim'
  
 " Initialize plugin system
 call plug#end()
