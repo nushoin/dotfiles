@@ -33,8 +33,8 @@ Plug 'chiedo/vim-case-convert'
 " w0rp/ale 'Asynchronous Lint Engine'
 Plug 'w0rp/ale'
 "Plug 'wellle/targets.vim' " adds new text objects e.g. text between '_'
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-"Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 "Plug 'Shougo/denite.nvim' " fuzzy finder
 "Plug 'wincent/command-t' , { 'do': 'cd ruby/command-t/ext/command-t && /usr/bin/ruby extconf.rb && make' }
 Plug 'ctrlpvim/ctrlp.vim'
