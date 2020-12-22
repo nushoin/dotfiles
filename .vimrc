@@ -105,6 +105,32 @@ let rg_command = g:rg_binary . ' --vimgrep'
 map <c-g> :Rg<CR>
 imap <c-g> <Esc>:Rg<CR>a
 
+" RipGrep + fzf
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+" On-the-fly find-in-files, continuous query
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
+" On-the-fly find-in-files, fuzzy query, using word under cursor
+command! -nargs=* -bang Rgw call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(expand('<cword>')), 1, fzf#vim#with_preview(), <bang>0)
+
+" On-the-fly find-in-files, fuzzy query, using command arguments
+command! -nargs=* -bang Rgg call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
+
+" c-_ actually maps to c-/
+map <c-_> :Rgw<CR>
+imap <c-_> <Esc>:Rgw<CR>
+
+" c-? is ctrl-shift-/
+map <c-?> :Rgg<CR>
+imap <c-?> <Esc>:Rgg<CR>
+
 " NERDTree
 map <c-s> :NERDTreeFind<CR>
 imap <c-s> <Esc>:NERDTreeFind<CR>a
@@ -123,11 +149,8 @@ let g:ctrlp_use_caching = 0
 " on Mac keyboards that is Shift-Fn-Return
 tmap <S-Insert> <C-W>"0
 
-" FlyGrep
-let g:spacevim_debug_level = 0
-
-" actually c-_ maps c-/. go figure
-map <c-_> :FlyGrep<CR>
+"" FlyGrep
+"let g:spacevim_debug_level = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " movement and indenting
