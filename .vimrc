@@ -6,12 +6,12 @@ filetype off
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
- 
+
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
- 
+
 " Make sure you use single quotes
- 
+
 Plug 'ervandew/supertab'
 "Plug 'valloric/youcompleteme', { 'do': './install.py' }
 Plug 'jlanzarotta/bufexplorer'
@@ -40,12 +40,15 @@ Plug 'junegunn/fzf.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 "Plug 'wsdjeg/FlyGrep.vim'
 Plug 'stefandtw/quickfix-reflector.vim'
- 
+
 " Initialize plugin system
 call plug#end()
 
 " turn on all filetype plugins
 filetype plugin indent on
+
+" remap the leader key to ','
+let mapleader = ","
 
 " load the matchit plugin that is bundled with vim
 if has('nvim')
@@ -105,7 +108,7 @@ let rg_command = g:rg_binary . ' --vimgrep'
 map <c-g> :Rg<CR>
 imap <c-g> <Esc>:Rg<CR>a
 
-" RipGrep + fzf
+" RipGrep + fzf. This one basically disables fzf and only uses ripgrep.
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
   let initial_command = printf(command_fmt, shellescape(a:query))
@@ -116,20 +119,29 @@ endfunction
 
 " On-the-fly find-in-files, continuous query
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+map <Leader>rg :RG<CR>
 
 " On-the-fly find-in-files, fuzzy query, using word under cursor
-command! -nargs=* -bang Rgw call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(expand('<cword>')), 1, fzf#vim#with_preview(), <bang>0)
+" The options passed to with_preview() are for ignoring the file name. This is done by using ':' as the field delimiter
+" and starting from the 4th field.
+command! -nargs=* -bang Rgw
+  \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(expand('<cword>')),
+  \                   1,
+  \                   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}),
+  \                   <bang>0)
 
 " On-the-fly find-in-files, fuzzy query, using command arguments
-command! -nargs=* -bang Rgg call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
+command! -nargs=* -bang Rgg
+  \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>),
+  \                   1,
+  \                   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}),
+  \                   <bang>0)
 
 " c-_ actually maps to c-/
 map <c-_> :Rgw<CR>
-imap <c-_> <Esc>:Rgw<CR>
 
-" c-? is ctrl-shift-/
-map <c-?> :Rgg<CR>
-imap <c-?> <Esc>:Rgg<CR>
+" find-in-files as-you-type
+map <Leader>ff :Rgg<CR>
 
 " NERDTree
 map <c-s> :NERDTreeFind<CR>
@@ -155,9 +167,6 @@ tmap <S-Insert> <C-W>"0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " movement and indenting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" remap the leader key to ','
-let mapleader = ","
 
 " no line wrapping
 set nowrap
@@ -522,8 +531,8 @@ noremap <c-]> 2<c-]>
 
 " automatically put the selection contents in the paste buffer and the
 " clipboard. when vim is finally at version >= 7.3.74 replace the lines.
-" 
-" *note* autoselecting to the selection buffer makes selecting then 
+"
+" *note* autoselecting to the selection buffer makes selecting then
 " pasting previous content impossible since the new content is selected
 " instead. so this option is disabled until a solution is found (i.e.
 " autoselecting only to the clipboard and not the paste buffer).
