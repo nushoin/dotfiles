@@ -5,4 +5,7 @@ if [[ "$debian_chroot" == "chroot" ]]; then
 fi
 
 # fzf keybindings
+export FZF_DEFAULT_COMMAND='fdfind'
+export FZF_CTRL_T_COMMAND='fdfind --type f'
+export FZF_ALT_C_COMMAND='fdfind --type d'
 source /usr/share/doc/fzf/examples/key-bindings.bash
