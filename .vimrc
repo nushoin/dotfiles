@@ -37,7 +37,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "Plug 'Shougo/denite.nvim' " fuzzy finder
 "Plug 'wincent/command-t' , { 'do': 'cd ruby/command-t/ext/command-t && /usr/bin/ruby extconf.rb && make' }
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
 "Plug 'wsdjeg/FlyGrep.vim'
 Plug 'stefandtw/quickfix-reflector.vim'
 
@@ -108,6 +108,9 @@ let rg_command = g:rg_binary . ' --vimgrep'
 map <c-g> :Rg<CR>
 imap <c-g> <Esc>:Rg<CR>a
 
+" set ripgrep as the default grep program
+let &grepprg=g:rg_binary . ' --color=never'
+
 " RipGrep + fzf. This one basically disables fzf and only uses ripgrep.
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
@@ -137,6 +140,12 @@ command! -nargs=* -bang Rgg
   \                   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}),
   \                   <bang>0)
 
+command! -nargs=? -bang -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'source': 'fdfind --type f'}), <bang>0)
+
+" ctrl-p for files
+map <c-p> :Files<CR>
+
 " c-_ actually maps to c-/
 map <c-_> :Rgw<CR>
 
@@ -149,13 +158,11 @@ imap <c-s> <Esc>:NERDTreeFind<CR>a
 map <c-e> :NERDTreeToggle<CR>
 imap <c-e> <Esc>:NERDTreeToggle<CR>a
 
-" CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
-let &grepprg=g:rg_binary . ' --color=never'
-let g:ctrlp_user_command = g:rg_binary . ' %s --files --color=never --glob ""'
-let g:ctrlp_use_caching = 0
+"" CtrlP
+"let g:ctrlp_map = '<c-p>'
+"let g:ctrlp_cmd = 'CtrlP'
+"let g:ctrlp_user_command = g:rg_binary . ' %s --files --color=never --glob ""'
+"let g:ctrlp_use_caching = 0
 
 " map shift-insert to paste in a terminal buffer.
 " on Mac keyboards that is Shift-Fn-Return
