@@ -72,6 +72,9 @@ let g:ale_linters = {
 " let ALE do auto completion
 let g:ale_completion_enabled = 1
 
+" When using eslint with ALE, enable the cache
+let g:ale_javascript_eslint_options = "--cache"
+
 " `git rev-parse --show-toplevel` returns the root folder of the current git
 " repo. so the following settings adds an include search path to <project root
 " folder>/_build, which is useful for e.g. the gtk project
