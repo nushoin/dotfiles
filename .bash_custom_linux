@@ -8,4 +8,4 @@ fi
 export FZF_DEFAULT_COMMAND='fdfind'
 export FZF_CTRL_T_COMMAND='fdfind --type f'
 export FZF_ALT_C_COMMAND='fdfind --type d'
-source /usr/share/doc/fzf/examples/key-bindings.bash
+source ~/.bash_fzf
