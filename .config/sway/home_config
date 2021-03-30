@@ -74,7 +74,7 @@ exec redshift
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
-input "1452:782:john’s_Trackpad" {
+input "1452:782:john’s_trackpad" {
     dwt disabled
     tap enabled
     drag enabled
