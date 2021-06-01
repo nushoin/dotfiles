@@ -125,7 +125,6 @@ endfunction
 
 " On-the-fly find-in-files, continuous query
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
-map <Leader>rg :RG<CR>
 
 " On-the-fly find-in-files, fuzzy query, using word under cursor
 " The options passed to with_preview() are for ignoring the file name. This is done by using ':' as the field delimiter
@@ -149,11 +148,18 @@ command! -nargs=? -bang -complete=dir Files
 " ctrl-p for files
 map <c-p> :Files<CR>
 
+" fuzzy find in current buffer
 " c-_ actually maps to c-/
-map <c-_> :Rgw<CR>
+map <c-_> :BLines<CR>
 
-" find-in-files as-you-type
+" find-in-files as-you-type, case insensitive exact match
+map <Leader>rg :RG<CR>
+
+" find-in-files as-you-type, fuzzy match
 map <Leader>ff :Rgg<CR>
+
+" find-in-files as-you-type, start with word under cursor
+map <Leader>ef :Rgw<CR>
 
 " NERDTree
 map <c-s> :NERDTreeFind<CR>
