@@ -67,6 +67,7 @@ let g:ale_linters = {
       \   'typescript': ['eslint'],
       \   'c': ['clang'],
       \   'cpp': ['clang'],
+      \   'python': ['pylint'],
       \}
 
 " let ALE do auto completion
