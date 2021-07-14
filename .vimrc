@@ -18,7 +18,7 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 "Plug 'vim-syntastic/syntastic' " conflicts with w0rp/ale
-Plug 'jremmen/vim-ripgrep'
+Plug 'nushoin/vim-ripgrep'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'leafgarland/typescript-vim'
