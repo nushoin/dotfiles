@@ -284,7 +284,7 @@ augroup END
 autocmd FileType make set noexpandtab
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Highlighting et al
+" Syntax highlighting et al
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " syntax highlight on
@@ -297,6 +297,10 @@ set hlsearch
 " turn off current search highlights
 map <c-\> :nohlsearch<CR>
 "imap <c-\> <Esc>:nohlsearch<CR>a
+
+" Re-draw syntax highlighting. Helpful when it get's wacky. Issuing a redraw command might help as well
+noremap <F12> <Esc>:syntax sync fromstart<CR>
+inoremap <F12> <C-o>:syntax sync fromstart<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Chrome
