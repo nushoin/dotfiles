@@ -154,13 +154,13 @@ map <c-p> :Files<CR>
 map <c-_> :BLines<CR>
 
 " find-in-files as-you-type, case insensitive exact match
-map <Leader>rg :RG<CR>
+map <Leader>ef :RG<CR>
 
 " find-in-files as-you-type, fuzzy match
 map <Leader>ff :Rgg<CR>
 
 " find-in-files as-you-type, start with word under cursor
-map <Leader>ef :Rgw<CR>
+map <Leader>rg :Rgw<CR>
 
 " NERDTree
 map <c-s> :NERDTreeFind<CR>
