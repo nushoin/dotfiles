@@ -112,6 +112,10 @@ let rg_command = g:rg_binary . ' --vimgrep'
 map <c-g> :Rg<CR>
 imap <c-g> <Esc>:Rg<CR>a
 
+" grep for word under cursor in current buffer
+map <c-F11> yiw:vimgrep "\<<C-R>0\>" %<CR>:copen<CR>
+imap <c-F11> <Esc>yiw:vimgrep "\<<C-R>0\>" %<CR>:copen<CR>
+
 " set ripgrep as the default grep program
 let &grepprg=g:rg_binary . ' --color=never'
 
@@ -541,8 +545,8 @@ imap <F7> <Esc>:make<CR>a
 " map <ctrl>+F12 to generate ctags for current folder:
 map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
 
-" map <ctrl>+F11 to grep for word under cursor
-map <C-F11> yiw:vimgrep <C-R>0 **/*.c*<CR>
+" map <ctrl>+F11 to vim-grep for word under cursor in all files
+"map <C-F11> yiw:vimgrep <C-R>0 **/*.c*<CR>
 
 " set line end (newline) format
 set ffs=unix,dos
