@@ -115,6 +115,13 @@ imap <c-g> <Esc>:Rg<CR>a
 " set ripgrep as the default grep program
 let &grepprg=g:rg_binary . ' --color=never'
 
+"
+" FZF
+"
+
+" Use ctrl-a <enter> to copy everything from fzf to the quickfix
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+
 " RipGrep + fzf. This one basically disables fzf and only uses ripgrep.
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
