@@ -135,6 +135,8 @@ function! RipgrepFzf(query, fullscreen)
   call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
 
+command! -bang EsLintAll :cexpr system('node ./node_modules/eslint/bin/eslint.js -c .eslintrc.json --format unix --ignore-pattern node_modules .')
+
 " On-the-fly find-in-files, continuous query
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
