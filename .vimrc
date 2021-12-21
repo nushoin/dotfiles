@@ -57,6 +57,9 @@ else
   packadd! matchit
 endif
 
+" lint the entire project, errors go to the quickfix window
+command! -bang EsLintAll :cexpr system('node ./node_modules/eslint/bin/eslint.js -c .eslintrc.json --format unix --ignore-pattern node_modules .')
+
 " currently disable all linters. to enable comment out this section and optionally
 " uncomment the next section.
 "let g:ale_linters = {
@@ -123,8 +126,14 @@ let &grepprg=g:rg_binary . ' --color=never'
 " FZF
 "
 
-" Use ctrl-a <enter> to copy everything from fzf to the quickfix
-let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+" Use ctrl-a to copy everything from fzf to the quickfix, ctrl-t to toggle selection of all items
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all+accept,ctrl-t:toggle-all'
+
+" Remove ctrl-t from the default action shortcuts (see README-VIM.md in the fzf git repo), so it can be used for toggle
+" selection (see $FZF_DEFAULT_OPTS)
+let g:fzf_action = {
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
 
 " RipGrep + fzf. This one basically disables fzf and only uses ripgrep.
 function! RipgrepFzf(query, fullscreen)
@@ -134,8 +143,6 @@ function! RipgrepFzf(query, fullscreen)
   let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
   call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
-
-command! -bang EsLintAll :cexpr system('node ./node_modules/eslint/bin/eslint.js -c .eslintrc.json --format unix --ignore-pattern node_modules .')
 
 " On-the-fly find-in-files, continuous query
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
