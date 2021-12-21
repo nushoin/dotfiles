@@ -116,8 +116,8 @@ map <c-g> :Rg<CR>
 imap <c-g> <Esc>:Rg<CR>a
 
 " grep for word under cursor in current buffer
-map <c-F11> yiw:vimgrep "\<<C-R>0\>" %<CR>:copen<CR>
-imap <c-F11> <Esc>yiw:vimgrep "\<<C-R>0\>" %<CR>:copen<CR>
+map <c-F11> yiw*:vimgrep "\<<C-R>0\>" %<CR>:copen<CR>
+imap <c-F11> <Esc>yiw*:vimgrep "\<<C-R>0\>" %<CR>:copen<CR>
 
 " set ripgrep as the default grep program
 let &grepprg=g:rg_binary . ' --color=never'
