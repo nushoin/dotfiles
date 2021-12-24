@@ -319,8 +319,8 @@ map <c-\> :nohlsearch<CR>
 "imap <c-\> <Esc>:nohlsearch<CR>a
 
 " Re-draw syntax highlighting. Helpful when it get's wacky. Issuing a redraw command might help as well
-noremap <F12> <Esc>:syntax sync fromstart<CR>
-inoremap <F12> <C-o>:syntax sync fromstart<CR>
+noremap <F10> <Esc>:syntax sync fromstart<CR>
+inoremap <F10> <C-o>:syntax sync fromstart<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Chrome
@@ -471,6 +471,17 @@ imap <a-up> <Esc>:cp<CR>i<c-o>
 map <Leader>en <Plug>(ale_next_wrap)
 map <Leader>ep <Plug>(ale_previous_wrap)
 
+" toggle open/close the quickfix window
+function! ToggleQuickFix()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+        copen
+    else
+        cclose
+    endif
+endfunction
+
+nnoremap <silent> <c-q> :call ToggleQuickFix()<cr>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Python related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -551,11 +562,11 @@ set autowrite
 map <F7> :make<CR>
 imap <F7> <Esc>:make<CR>a
 
-" map <ctrl>+F12 to generate ctags for current folder:
-map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
+" map <ctrl>+F11 to generate ctags for current folder:
+"map <C-F11> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
 
-" map <ctrl>+F11 to vim-grep for word under cursor in all files
-"map <C-F11> yiw:vimgrep <C-R>0 **/*.c*<CR>
+" map <ctrl>+F12 to vim-grep for word under cursor in all files
+"map <C-F12> yiw:vimgrep <C-R>0 **/*.c*<CR>
 
 " set line end (newline) format
 set ffs=unix,dos
