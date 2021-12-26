@@ -14,7 +14,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'ervandew/supertab'
 "Plug 'valloric/youcompleteme', { 'do': './install.py' }
-Plug 'jlanzarotta/bufexplorer'
+"Plug 'jlanzarotta/bufexplorer'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 "Plug 'vim-syntastic/syntastic' " conflicts with w0rp/ale
@@ -172,6 +172,9 @@ map <c-p> :Files<CR>
 " fuzzy find in current buffer
 " c-_ actually maps to c-/
 map <c-_> :BLines<CR>
+
+" open buffers
+noremap <Leader>be :Buffers<CR>
 
 " find-in-files as-you-type, case insensitive exact match
 map <Leader>ef :RG<CR>
@@ -571,10 +574,11 @@ imap <F7> <Esc>:make<CR>a
 " set line end (newline) format
 set ffs=unix,dos
 
-" bufexplorer and friends
-map <a-/> <Leader>be
+" buffers
 map <a-.> :bn<Cr>
 map <a-,> :bp<Cr>
+
+" window size
 map <a-=> :resize +1<Cr>
 map <a--> :resize -1<Cr>
 
