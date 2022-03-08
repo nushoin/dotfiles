@@ -31,7 +31,8 @@ Plug 'tpope/vim-fugitive'
 " convert between camelCase, snake_case etc
 Plug 'chiedo/vim-case-convert'
 " w0rp/ale 'Asynchronous Lint Engine'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale' ALE moved to dense-analysis
+Plug 'dense-analysis/ale'
 "Plug 'wellle/targets.vim' " adds new text objects e.g. text between '_'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -67,7 +68,7 @@ command! -bang EsLintAll :cexpr system('node ./node_modules/eslint/bin/eslint.js
 "\}
 let g:ale_linters = {
       \   'javascript': ['eslint'],
-      \   'typescript': ['eslint'],
+      \   'typescript': ['eslint', 'tsserver'],
       \   'c': ['clang'],
       \   'cpp': ['clang'],
       \   'python': ['pylint'],
