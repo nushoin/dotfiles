@@ -22,7 +22,7 @@ set $right l
 #set $term urxvt
 #set $term gnome-terminal
 #set $term alacritty
-set $term kitty
+set $term ~/Documents/src/kitty/kitty/launcher/kitty
 
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
@@ -75,7 +75,7 @@ exec redshift
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
-input "1452:782:john’s_trackpad" {
+input "1452:782:john’s_Trackpad" {
     dwt disabled
     tap enabled
     drag enabled

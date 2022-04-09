@@ -300,7 +300,7 @@ augroup END
 augroup csrc
   au!
   " note: the following line forces treating 'h' files as 'C' rather than 'C++'
-  autocmd BufRead,BufNewFile *.h set filetype=c
+  " autocmd BufRead,BufNewFile *.h set filetype=c
   autocmd FileType c,cpp  set smartindent
   autocmd FileType c,cpp  set cindent
   "autocmd FileType c,cpp  set noexpandtab
