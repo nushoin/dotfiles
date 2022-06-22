@@ -327,6 +327,11 @@ augroup END
 " In Makefiles, don't expand tabs to spaces, since we need the actual tabs
 autocmd FileType make set noexpandtab
 
+augroup gherkin_template
+  au!
+  autocmd BufNewFile,BufRead *.feature.template set syntax=cucumber
+augroup END
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax highlighting et al
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
