@@ -1,5 +1,8 @@
 alias ll='ls -lFh'
-lls() { ll --group-directories-first --color=always $*|less -SR; }
+
+lls() { ll --group-directories-first --color=always $* | less -SR; }
+lessJson() { cat $1 | jq -C | less -SR; }
+
 
 case "$OSTYPE" in
   linux*)
