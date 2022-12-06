@@ -156,6 +156,9 @@ command! BuffersDelete call fzf#run(fzf#wrap({
 
 noremap <Leader>bg :BuffersDelete<CR>
 
+command! BufOnly silent execute '%bdelete|edit #|normal `"'
+noremap <Leader>bo :BufOnly<CR>
+
 " RipGrep + fzf. This one basically disables fzf and only uses ripgrep.
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
