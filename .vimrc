@@ -41,6 +41,7 @@ Plug 'junegunn/fzf.vim'
 "Plug 'ctrlpvim/ctrlp.vim'
 "Plug 'wsdjeg/FlyGrep.vim'
 Plug 'stefandtw/quickfix-reflector.vim'
+Plug 'towolf/vim-helm'
 
 " Initialize plugin system
 call plug#end()
