@@ -157,6 +157,7 @@ command! BuffersDelete call fzf#run(fzf#wrap({
 
 noremap <Leader>bg :BuffersDelete<CR>
 
+" Close all buffers except for the current one
 command! BufOnly silent execute '%bdelete|edit #|normal `"'
 noremap <Leader>bo :BufOnly<CR>
 
@@ -189,7 +190,7 @@ command! -nargs=* -bang Rgg
   \                   <bang>0)
 
 command! -nargs=? -bang -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'source': 'fdfind --type f'}), <bang>0)
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'source': 'fdfind --hidden --type f'}), <bang>0)
 
 " ctrl-p for files
 map <c-p> :Files<CR>
