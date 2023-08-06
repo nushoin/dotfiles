@@ -70,8 +70,8 @@ command! -bang EsLintAll :cexpr system('node ./node_modules/eslint/bin/eslint.js
 let g:ale_linters = {
       \   'javascript': ['eslint'],
       \   'typescript': ['eslint', 'tsserver'],
-      \   'c': ['clang'],
-      \   'cpp': ['clang'],
+      \   'c': ['clangd'],
+      \   'cpp': ['clangd'],
       \   'python': ['pylint'],
       \}
 
@@ -108,8 +108,8 @@ let g:ale_c_gcc_options .= " -I" . g:project_root . "/_build/subprojects/graphen
 let g:ale_c_gcc_options .= " -I" . g:project_root . "/_build/demos/gtk-demo"
 
 " ALE clang
-let g:ale_c_clang_executable = "clang-8"
-let g:ale_c_clang_options = g:ale_c_gcc_options
+"let g:ale_c_clang_executable = "clang-8"
+"let g:ale_c_clang_options = g:ale_c_gcc_options
 
 " RipGrep
 let rg_binary="rg"
