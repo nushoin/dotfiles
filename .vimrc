@@ -75,6 +75,11 @@ let g:ale_linters = {
       \   'python': ['pylint'],
       \}
 
+let g:ale_fixers = {
+      \   'c': ['clang-format', 'clangtidy'],
+      \   'cpp': ['clang-format', 'clangtidy'],
+      \}
+
 " let ALE do auto completion
 let g:ale_completion_enabled = 1
 
