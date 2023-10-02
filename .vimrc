@@ -62,6 +62,12 @@ endif
 " lint the entire project, errors go to the quickfix window
 command! -bang EsLintAll :cexpr system('node ./node_modules/eslint/bin/eslint.js -c .eslintrc.json --format unix --ignore-pattern node_modules .')
 
+set omnifunc=ale#completion#OmniFunc
+
+let g:ale_fix_on_save = 1
+let g:ale_floating_preview = 1
+let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰']
+
 " currently disable all linters. to enable comment out this section and optionally
 " uncomment the next section.
 "let g:ale_linters = {
@@ -271,12 +277,17 @@ set whichwrap+=<,>,h,l,[,]
 " Code completion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set omnifunc=syntaxcomplete#Complete
+" I use ALE for completion
+" set omnifunc=syntaxcomplete#Complete
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
+
+map gh <Plug>(ale_hover)
+map gd <Plug>(ale_go_to_definition)
+map gt <Plug>(ale_detail)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File type specific options
