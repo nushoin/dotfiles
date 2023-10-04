@@ -532,6 +532,8 @@ endfunction
 
 nnoremap <silent> <c-q> :call ToggleQuickFix()<cr>
 
+autocmd BufEnter *.h :setlocal filetype=c
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Python related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
