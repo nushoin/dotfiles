@@ -84,6 +84,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
       \   'c': ['clang-format', 'clangtidy'],
       \   'cpp': ['clang-format', 'clangtidy'],
+      \   'python': ['yapf'],
       \}
 
 " let ALE do auto completion
