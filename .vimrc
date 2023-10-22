@@ -289,6 +289,7 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 map gh <Plug>(ale_hover)
 map gd <Plug>(ale_go_to_definition)
 map gt <Plug>(ale_detail)
+map gr <Plug>(ale_find_references)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File type specific options
