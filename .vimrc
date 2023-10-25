@@ -78,7 +78,7 @@ let g:ale_linters = {
       \   'typescript': ['eslint', 'tsserver'],
       \   'c': ['clangd'],
       \   'cpp': ['gcc'],
-      \   'python': ['pylint'],
+      \   'python': ['pylint', 'pylsp'],
       \}
 
 let g:ale_fixers = {
