@@ -412,7 +412,8 @@ map <a-left> 4zh
 imap <a-right> <Esc>4zl
 imap <a-left> <Esc>4zh
 map <c-l> 4zl
-map <c-h> 4zh
+nmap <BS> 4zh
+nmap <c-h> 4zh
 imap <c-l> <Esc>4zla
 imap <c-h> <Esc>4zha
 
