@@ -79,6 +79,7 @@ let g:ale_linters = {
       \   'c': ['clangd'],
       \   'cpp': ['gcc'],
       \   'python': ['pylint', 'pylsp'],
+      \   'sh': ['language_server', 'shellcheck'],
       \}
 
 let g:ale_fixers = {
