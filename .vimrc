@@ -68,6 +68,16 @@ let g:ale_fix_on_save = 1
 let g:ale_floating_preview = 1
 let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰']
 
+let g:ale_python_pylsp_config = {
+      \   'pylsp': {
+      \     'plugins': {
+      \       'pycodestyle': {
+      \         'maxLineLength': 100,
+      \       }
+      \     }
+      \   },
+      \ }
+
 " currently disable all linters. to enable comment out this section and optionally
 " uncomment the next section.
 "let g:ale_linters = {
