@@ -385,6 +385,26 @@ map <c-\> :nohlsearch<CR>
 noremap <F10> <Esc>:syntax sync fromstart<CR>
 inoremap <F10> <C-o>:syntax sync fromstart<CR>
 
+" always use black on yellow for search, and get search in inverse color inside visual selection
+hi Search cterm=inverse ctermbg=black ctermfg=yellow
+
+" always use black on white for visual selection
+hi Visual ctermfg=black ctermbg=white
+
+" ALE errors
+hi ALEWarning ctermbg=darkblue ctermfg=white
+hi ALEError ctermbg=red ctermfg=black
+
+augroup pythonhighlight
+  au!
+
+  " statement (`if`, `for` etc) in dark red. For C/C++, VimScript
+  autocmd BufEnter * hi Statement ctermfg=darkred
+
+  " statement (`if`, `for` etc) for Python in magenta
+  autocmd BufEnter *.py hi Statement ctermfg=magenta
+augroup END
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Chrome
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
