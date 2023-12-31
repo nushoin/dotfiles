@@ -445,8 +445,6 @@ imap <a-left> <Esc>4zh
 map <c-l> 4zl
 nmap <BS> 4zh
 nmap <c-h> 4zh
-imap <c-l> <Esc>4zla
-imap <c-h> <Esc>4zha
 
 " selection shortcuts
 imap <s-left> <Esc>v
