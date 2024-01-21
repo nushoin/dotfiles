@@ -134,6 +134,10 @@ let g:ale_c_gcc_options .= " -I" . g:project_root . "/_build/demos/gtk-demo"
 "let g:ale_c_clang_executable = "clang-8"
 "let g:ale_c_clang_options = g:ale_c_gcc_options
 
+" Toggle ALE fix-on-save. Due to some reason this isn't in ALE proper, see
+" https://github.com/dense-analysis/ale/issues/1353
+command! ALEToggleFixer execute "let g:ale_fix_on_save = get(g:, 'ale_fix_on_save', 0) ? 0 : 1"
+
 " RipGrep
 let rg_binary="rg"
 let rg_command = g:rg_binary . ' --vimgrep'
