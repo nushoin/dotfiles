@@ -64,6 +64,11 @@ command! -bang EsLintAll :cexpr system('node ./node_modules/eslint/bin/eslint.js
 
 set omnifunc=ale#completion#OmniFunc
 
+" Use separate compile_commands.json for clangtidy since if we pass `-D__SIZE_TYPE__='unsigned int'`
+" to clangtidy, it takes ~10 seconds to format a file
+let g:ale_c_clangtidy_extra_options = '-p ./clang-tidy-config'
+let g:ale_cpp_clangtidy_extra_options = '-p ./clang-tidy-config'
+
 let g:ale_fix_on_save = 1
 let g:ale_floating_preview = 1
 let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰']
