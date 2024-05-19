@@ -643,8 +643,11 @@ set noswapfile
 
 " replace the ugly vertical split character with a simple inverted space
 " note that the backslash is followed by a single space
+" vim uses guifg, nvim uses ctermfg / bg due to some reason
 set fcs+=vert:\ 
 highlight VertSplit guifg='Gray'
+highlight VertSplit ctermfg=Gray
+highlight VertSplit ctermbg=Gray
 highlight StatusLine guifg='Gray'
 highlight StatusLineNC guifg='Gray'
 
