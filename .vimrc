@@ -43,6 +43,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'towolf/vim-helm'
 
+if has('nvim')
+  " Neovim-only plugins
+  Plug 'jbyuki/venn.nvim'
+endif
+
 " Initialize plugin system
 call plug#end()
 
