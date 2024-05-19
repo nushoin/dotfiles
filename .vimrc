@@ -64,6 +64,11 @@ else
   packadd! matchit
 endif
 
+" lie to nvim that the background is light in order to get my preferred highlight colors
+if has('nvim')
+  set background=light
+endif
+
 " lint the entire project, errors go to the quickfix window
 command! -bang EsLintAll :cexpr system('node ./node_modules/eslint/bin/eslint.js -c .eslintrc.json --format unix --ignore-pattern node_modules .')
 
