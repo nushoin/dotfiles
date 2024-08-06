@@ -83,11 +83,15 @@ let g:ale_fix_on_save = 1
 let g:ale_floating_preview = 1
 let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰']
 
+" Disabling the `mccabe` analyzer because I don't care about code cyclomatic complexity
 let g:ale_python_pylsp_config = {
       \   'pylsp': {
       \     'plugins': {
       \       'pycodestyle': {
       \         'maxLineLength': 100,
+      \       },
+      \       'mccabe': {
+      \         'enabled': 0,
       \       }
       \     }
       \   },
@@ -156,8 +160,8 @@ command! ALEToggleFixer execute "let g:ale_fix_on_save = get(g:, 'ale_fix_on_sav
 " RipGrep
 let rg_binary="rg"
 let rg_command = g:rg_binary . ' --vimgrep'
-map <c-g> :Rg<CR>
-imap <c-g> <Esc>:Rg<CR>a
+map <c-g> yiw*:Rg<CR>
+imap <c-g> <Esc>yiw*:Rg<CR>a
 
 " grep for word under cursor in current buffer
 map <c-y> yiw*:vimgrep "\<<C-R>0\>" %<CR>:copen<CR>
