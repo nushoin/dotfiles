@@ -42,6 +42,7 @@ Plug 'junegunn/fzf.vim'
 "Plug 'wsdjeg/FlyGrep.vim'
 Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'towolf/vim-helm'
+"Plug 'github/copilot.vim'
 
 if has('nvim')
   " Neovim-only plugins
@@ -78,6 +79,7 @@ set omnifunc=ale#completion#OmniFunc
 " to clangtidy, it takes ~10 seconds to format a file
 let g:ale_c_clangtidy_extra_options = '-p ./clang-tidy-config'
 let g:ale_cpp_clangtidy_extra_options = '-p ./clang-tidy-config'
+let g:ale_sh_shfmt_options = '-i 2'
 
 let g:ale_fix_on_save = 1
 let g:ale_floating_preview = 1
@@ -115,6 +117,7 @@ let g:ale_fixers = {
       \   'c': ['clang-format', 'clangtidy'],
       \   'cpp': ['clang-format', 'clangtidy'],
       \   'python': ['yapf'],
+      \   'sh': ['shfmt'],
       \}
 
 " let ALE do auto completion
