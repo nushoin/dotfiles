@@ -70,6 +70,12 @@ if has('nvim')
   set background=light
 endif
 
+" neovim 10.x has some issues with printing `+q4D73` on the top left corner when remotely (tmux?)
+" See https://github.com/neovim/neovim/issues/28776#issuecomment-2154890629
+if has('nvim')
+  let g:clipboard = {}
+endif
+
 " lint the entire project, errors go to the quickfix window
 command! -bang EsLintAll :cexpr system('node ./node_modules/eslint/bin/eslint.js -c .eslintrc.json --format unix --ignore-pattern node_modules .')
 
