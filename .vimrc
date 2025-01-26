@@ -42,7 +42,12 @@ Plug 'junegunn/fzf.vim'
 "Plug 'wsdjeg/FlyGrep.vim'
 Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'towolf/vim-helm'
-"Plug 'github/copilot.vim'
+
+" if has('nvim')
+"   Plug 'github/copilot.vim'
+"   Plug 'nvim-lua/plenary.nvim'
+"   Plug 'CopilotC-Nvim/CopilotChat.nvim'
+" endif
 
 if has('nvim')
   " Neovim-only plugins
@@ -51,6 +56,14 @@ endif
 
 " Initialize plugin system
 call plug#end()
+
+
+" if has('nvim')
+" lua << EOF
+" require("CopilotChat").setup { }
+" EOF
+" endif
+
 
 " turn on all filetype plugins
 filetype plugin indent on
