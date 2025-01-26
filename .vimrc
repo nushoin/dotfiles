@@ -67,6 +67,7 @@ endif
 
 " lie to nvim that the background is light in order to get my preferred highlight colors
 if has('nvim')
+  colorscheme vim
   set background=light
 endif
 
